@@ -1,6 +1,7 @@
-﻿var beerData = new BeerData();
+﻿BeerData beerData = new BeerData();
 beerData.Add("IPA");
 beerData.Add("Stout");
+beerData.Add("Lager"); // This will throw an exception because the limit is 2
 
 var reportGeneratorBeer = new ReportGeneratorBeer(beerData);
 var reportGeneratorHtmlBeer = new ReportGeneratorHtmlBeer(beerData);
@@ -14,17 +15,39 @@ public interface IReportGenerator
 
 public class BeerData
 {
-    private List<string> beers;
+    protected List<string> beers;
 
     public BeerData()
     {
         beers = new List<string>();
     }
 
-    public void Add(string beer) => beers.Add(beer);
+    public virtual void Add(string beer) => beers.Add(beer);
 
     public List<string> Get() => beers;
 
+}
+
+public class LimitedBeerData
+{
+    private BeerData beerData = new BeerData();
+    private int limit;
+    private int count = 0;
+
+    public LimitedBeerData(int limit)
+    {
+        this.limit = limit;
+    }
+
+    public void Add(string beer)
+    {
+        if (count >= limit)
+        {
+            throw new InvalidOperationException($"Cannot add more than {limit} beers.");
+        }
+        beerData.Add(beer);
+        count++;
+    }
 }
 
 public class  ReportGeneratorBeer : IReportGenerator
