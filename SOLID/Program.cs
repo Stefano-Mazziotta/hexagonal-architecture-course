@@ -1,7 +1,8 @@
-﻿BeerData beerData = new BeerData();
+﻿IRepository<string> beerData = new BeerData();
+
 beerData.Add("IPA");
 beerData.Add("Stout");
-beerData.Add("Lager"); // This will throw an exception because the limit is 2
+beerData.Add("Lager");
 
 var reportGeneratorBeer = new ReportGeneratorBeer(beerData);
 var reportGeneratorHtmlBeer = new ReportGeneratorHtmlBeer(beerData);
@@ -15,6 +16,12 @@ void Show(IReportShow report)
     report.Show();
 }
 
+public interface IRepository<T>
+    {
+    void Add(T item);
+    List<T> Get();
+}
+
 public interface IReportGenerator
 {
     public string Generate();
@@ -25,7 +32,7 @@ public interface IReportShow
     public void Show();
 }
 
-public class BeerData
+public class BeerData : IRepository<string>
 {
     protected List<string> beers;
 
@@ -42,13 +49,14 @@ public class BeerData
 
 public class LimitedBeerData
 {
-    private BeerData beerData = new BeerData();
+    private IRepository<string> beerData;
     private int limit;
     private int count = 0;
 
-    public LimitedBeerData(int limit)
+    public LimitedBeerData(int limit, IRepository<string> beerData)
     {
         this.limit = limit;
+        this.beerData = beerData;
     }
 
     public void Add(string beer)
@@ -64,11 +72,12 @@ public class LimitedBeerData
 
 public class  ReportGeneratorBeer : IReportGenerator, IReportShow
 {
-    private BeerData beerData;
-    public ReportGeneratorBeer(BeerData beerData)
+    private IRepository<string> beerData;
+    public ReportGeneratorBeer(IRepository<string> beerData)
     {
         this.beerData = beerData;
     }
+
     public string Generate()
     {
         string data = "";
@@ -87,8 +96,8 @@ public class  ReportGeneratorBeer : IReportGenerator, IReportShow
 }
 public class ReportGeneratorHtmlBeer : IReportGenerator
 {
-    private BeerData beerData;
-    public ReportGeneratorHtmlBeer(BeerData beerData)
+    private IRepository<string> beerData;
+    public ReportGeneratorHtmlBeer(IRepository<string> beerData)
     {
         this.beerData = beerData;
     }
