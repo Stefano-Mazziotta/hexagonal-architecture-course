@@ -8,9 +8,21 @@ var reportGeneratorHtmlBeer = new ReportGeneratorHtmlBeer(beerData);
 var report = new Report();
 report.Save(reportGeneratorHtmlBeer, "beer_report.html");
 
+Show(reportGeneratorBeer);
+
+void Show(IReportShow report) 
+{
+    report.Show();
+}
+
 public interface IReportGenerator
 {
     public string Generate();
+}
+
+public interface IReportShow
+{
+    public void Show();
 }
 
 public class BeerData
@@ -50,7 +62,7 @@ public class LimitedBeerData
     }
 }
 
-public class  ReportGeneratorBeer : IReportGenerator
+public class  ReportGeneratorBeer : IReportGenerator, IReportShow
 {
     private BeerData beerData;
     public ReportGeneratorBeer(BeerData beerData)
@@ -66,6 +78,11 @@ public class  ReportGeneratorBeer : IReportGenerator
 
         }
         return data;
+    }
+
+    public void Show()
+    {
+        Console.WriteLine(Generate());
     }
 }
 public class ReportGeneratorHtmlBeer : IReportGenerator
