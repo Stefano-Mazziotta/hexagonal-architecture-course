@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOLID", "SOLID\SOLID.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexagonalArchitectureIntroduction", "HexagonalArchitecture\HexagonalArchitectureIntroduction.csproj", "{05ABF19A-41D5-47B4-941A-E6DAE65243D0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HexagonalArchitectureMinimal", "HexagonalArchitectureMinimal", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{E14FE940-241F-47ED-B936-B223DA2D9A70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonRepository", "JsonRepository\JsonRepository.csproj", "{488978A9-2C9E-4083-AEDB-52F5CC5F2036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{C04CE3A4-C127-4AE8-8568-A6300BF116A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +47,26 @@ Global
 		{05ABF19A-41D5-47B4-941A-E6DAE65243D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05ABF19A-41D5-47B4-941A-E6DAE65243D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05ABF19A-41D5-47B4-941A-E6DAE65243D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E14FE940-241F-47ED-B936-B223DA2D9A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E14FE940-241F-47ED-B936-B223DA2D9A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E14FE940-241F-47ED-B936-B223DA2D9A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E14FE940-241F-47ED-B936-B223DA2D9A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488978A9-2C9E-4083-AEDB-52F5CC5F2036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488978A9-2C9E-4083-AEDB-52F5CC5F2036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488978A9-2C9E-4083-AEDB-52F5CC5F2036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488978A9-2C9E-4083-AEDB-52F5CC5F2036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04CE3A4-C127-4AE8-8568-A6300BF116A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04CE3A4-C127-4AE8-8568-A6300BF116A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04CE3A4-C127-4AE8-8568-A6300BF116A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04CE3A4-C127-4AE8-8568-A6300BF116A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E14FE940-241F-47ED-B936-B223DA2D9A70} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{488978A9-2C9E-4083-AEDB-52F5CC5F2036} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C04CE3A4-C127-4AE8-8568-A6300BF116A9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60429F61-442B-484E-A63F-DBA54F2E5A91}
