@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoryComponent.Models
+namespace ApplicationComponent.DTOs
 {
-    public class NoteModel
+    public class NoteDTO
     {
-        public int Id  { get; set; }
+        public int Id { get; set; }
         public int ItemId { get; set; }
         public string Message { get; set; }
-        public DateTime CreatedAt { get; set; }
         public string? Color { get; set; }
-        public ItemModel Item { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
