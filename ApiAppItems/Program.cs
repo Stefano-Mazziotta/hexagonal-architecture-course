@@ -42,6 +42,11 @@ builder.Services.AddTransient<IRepositoryFactory<IAddRepository<Note>, NoteExtra
 builder.Services.AddTransient<IMapper<NoteDTO, NoteExtraData>, NoteExtraDataMapper>();
 builder.Services.AddTransient<IAddService<NoteDTO, NoteExtraData>, NoteWithFactoryService<NoteDTO, NoteExtraData>>();
 
+// Add new primary and secondary ports feature
+builder.Services.AddTransient<ICompleteRepository, ItemRepository>();
+builder.Services.AddTransient<IGetRepository<Item>, ItemRepository>();
+builder.Services.AddTransient<ICompleteService, CompleteItemService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -95,5 +100,22 @@ app.MapPost("notes-factory", async (NoteDTO dto, IAddService<NoteDTO, NoteExtraD
     await service.AddAsync(dto);
     return Results.Created();
 }).WithName("AddNoteFactory");
+
+app.MapPut("complete-item/{id}", async (int id, ICompleteService service) =>
+{
+    try
+    {
+        await service.Complete(id);
+        return Results.NoContent();
+    }
+    catch (KeyNotFoundException exception)
+    {
+        return Results.NotFound(exception.Message);
+    }
+    catch (ArgumentException exception)
+    {
+        return Results.InternalServerError(exception.Message);
+    }
+}).WithName("CompleteItem");
 
 app.Run();
