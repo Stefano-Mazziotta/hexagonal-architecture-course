@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppItems", "ConsoleA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAppItems", "ApiAppItems\ApiAppItems.csproj", "{5BCC18C7-8C62-4256-B978-D1F13126C645}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapperComponent", "MapperComponent\MapperComponent.csproj", "{1FF1566A-A844-4AB7-A958-83C767C5CCFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,10 @@ Global
 		{5BCC18C7-8C62-4256-B978-D1F13126C645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BCC18C7-8C62-4256-B978-D1F13126C645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BCC18C7-8C62-4256-B978-D1F13126C645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF1566A-A844-4AB7-A958-83C767C5CCFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF1566A-A844-4AB7-A958-83C767C5CCFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF1566A-A844-4AB7-A958-83C767C5CCFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF1566A-A844-4AB7-A958-83C767C5CCFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +128,7 @@ Global
 		{8BFCA980-E549-4685-A5E5-3A028EA170C0} = {43C1CA6F-9D95-4A12-B465-D7E5E79B83A6}
 		{F4941AEB-D41F-4459-AB3E-3C58E72FB150} = {43C1CA6F-9D95-4A12-B465-D7E5E79B83A6}
 		{5BCC18C7-8C62-4256-B978-D1F13126C645} = {43C1CA6F-9D95-4A12-B465-D7E5E79B83A6}
+		{1FF1566A-A844-4AB7-A958-83C767C5CCFB} = {43C1CA6F-9D95-4A12-B465-D7E5E79B83A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60429F61-442B-484E-A63F-DBA54F2E5A91}
