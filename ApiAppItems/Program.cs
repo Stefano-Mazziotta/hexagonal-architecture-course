@@ -6,6 +6,8 @@ using MapperComponent;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using RepositoryComponent;
+using RepositoryComponent.ExtraData;
+using RepositoryComponent.Factories;
 using RepositoryComponent.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +36,11 @@ builder.Services.AddTransient<IAddRepository<NoteModel>, NoteMapperRepository>()
 builder.Services.AddTransient<IMapper<NoteDTO, Note>, NoteEntityMapper>();
 builder.Services.AddTransient<IMapper<NoteDTO, NoteModel>, NoteModelMapper>();
 builder.Services.AddTransient<IAddService<NoteDTO, NoteModel>, NoteMapperService<NoteDTO, NoteModel>>();
+
+// Factory
+builder.Services.AddTransient<IRepositoryFactory<IAddRepository<Note>, NoteExtraData>, NoteRepositoryFactory>();
+builder.Services.AddTransient<IMapper<NoteDTO, NoteExtraData>, NoteExtraDataMapper>();
+builder.Services.AddTransient<IAddService<NoteDTO, NoteExtraData>, NoteWithFactoryService<NoteDTO, NoteExtraData>>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -82,5 +89,11 @@ app.MapPost("notes-mapper", async (NoteDTO dto, IAddService<NoteDTO, NoteModel> 
     await service.AddAsync(dto);
     return Results.Created();
 }).WithName("AddNoteMapper");
+
+app.MapPost("notes-factory", async (NoteDTO dto, IAddService<NoteDTO, NoteExtraData> service) =>
+{
+    await service.AddAsync(dto);
+    return Results.Created();
+}).WithName("AddNoteFactory");
 
 app.Run();
